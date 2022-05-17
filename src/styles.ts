@@ -8,7 +8,7 @@ export const AppContainer = styled.div`
   width: 100%;
 `;
 
-export const ColumnsContainer = styled.div`
+export const ColumnContainer = styled.div`
   background-color: #ebecf0;
   width: 300px;
   min-height: 40px;
