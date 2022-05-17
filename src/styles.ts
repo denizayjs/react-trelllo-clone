@@ -73,7 +73,7 @@ export const NewItemButton = styled.button`
 `;
 
 export const NewItemInput = styled.input`
-  border-radius: 3px;
+  border-radius: 2px;
   border: none;
   box-shadow: #091e42 0px 1px 0px 0px;
   margin-bottom: 0.5rem;
