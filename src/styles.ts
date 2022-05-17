@@ -3,7 +3,7 @@ export const AppContainer = styled.div`
   background-color: #3179ba;
   display: flex;
   align-items: flex-start;
-  height: 100%;
+  height: 100vh;
   padding: 20px;
   width: 100%;
 `;
