@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useReducer, useContext } from "react";
 
 const AppStateContext = createContext<AppStateContextProps>(
   {} as AppStateContextProps
@@ -46,4 +46,8 @@ export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
       {children}
     </AppStateContext.Provider>
   );
+};
+
+export const useAppState = () => {
+  return useContext(AppStateContext);
 };
