@@ -14,6 +14,7 @@ interface List {
 }
 interface AppStateContextProps {
   state: AppState;
+  dispatch: React.Dispatch<Action>;
 }
 
 const appData: AppState = {
@@ -36,24 +37,7 @@ const appData: AppState = {
   ],
 };
 
-export interface AppState {
-  lists: List[];
-}
-
-export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
-  return (
-    <AppStateContext.Provider value={{ state: appData }}>
-      {children}
-    </AppStateContext.Provider>
-  );
-};
-
-export const useAppState = () => {
-  return useContext(AppStateContext);
-};
-
 //Define actions
-
 type Action =
   | { type: "ADD_LIST"; payload: string }
   | { type: "ADD_TASK"; payload: { text: string; taskId: string } };
@@ -75,4 +59,18 @@ const appStateReducer = (state: AppState, action: Action): AppState => {
       return state;
     }
   }
+};
+export interface AppState {
+  lists: List[];
+}
+export const useAppState = () => {
+  return useContext(AppStateContext);
+};
+export const AppStateProvider = ({ children }: React.PropsWithChildren<{}>) => {
+  const [state, dispatch] = useReducer(appStateReducer, appData);
+  return (
+    <AppStateContext.Provider value={{ state, dispatch }}>
+      {children}
+    </AppStateContext.Provider>
+  );
 };
